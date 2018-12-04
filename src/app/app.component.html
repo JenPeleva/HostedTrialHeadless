@@ -1,0 +1,43 @@
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="row">
+          <div class="col-sm-3 col-xs-2">
+            <div class="sf-Long-text">
+              <p>
+                <a routerLink="/articles">
+                  <img style="margin-top: 20px;" alt="Logo_Quantum" src="/images/default-source/default-album/logo_quantum.png?sfvrsn=c42995f3_0" title="Logo_Quantum">
+                </a>
+              </p>
+            </div>
+          </div>
+          <div class="col-sm-9 col-xs-10">
+            <nav class="navbar navbar-default  blue-horizontal">
+              <div class="container-fluid">
+                <div class="collapse navbar-collapse">
+                  <ul class="nav navbar-nav">
+                    <li><a routerLink="/articles" routerLinkActive="active">Articles</a></li>
+                    <li><a routerLink="/authors" routerLinkActive="active">Authors</a></li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 header-right-group">
+        <div class="row">
+          <div class="col-xs-12">
+            <app-search></app-search>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</main>

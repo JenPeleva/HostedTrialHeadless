@@ -1,0 +1,13 @@
+<div *ngIf="article" class="row">
+  <div class="container">
+      <h2>{{article.Title}}</h2>
+      <div class="text-muted">{{article.DateCreated | date:'medium'}} by {{article.Author}}</div>
+      <div class="news_image">
+        <img style="display: block; min-height: 230px;" *ngIf="article.Thumbnail" [src]="article.Thumbnail.Url" [alt]="article.Thumbnail.AlternativeText"/>
+      </div>
+      <div class="news_summary" [innerHtml]="article.Summary">
+      </div>
+      <div [innerHtml]="articleContent">
+      </div>
+  </div>
+</div>

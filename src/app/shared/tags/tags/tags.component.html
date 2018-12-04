@@ -1,0 +1,8 @@
+<ul *ngFor="let tag of tags" class="@Model.CssClass sf-Tags list-unstyled">
+  <li>
+    <a (click)="handleClick(tag)">{{tag.Title}}</a>
+    <span *ngIf="tag.Count" class="text-muted">
+      ({{tag.Count}})
+    </span>
+  </li>
+</ul>
