@@ -7,19 +7,16 @@ import {NotFoundComponent} from '../shared/not-found/not-found.component';
 import {AuthorComponent} from '../shared/authors/author/author.component';
 import {ArticleComponent} from '../shared/articles/article/article.component';
 import {SearchResultComponent} from '../shared/search/search-result/search-result.component';
-import {LoginComponent} from '../shared/login/login/login.component';
-import {AuthGuard} from '../auth/auth.guard';
 
 
 const routes: Routes = [
-  { path: 'articles',  canActivate: [AuthGuard], component: ArticlesComponent},
-  { path: 'articles/:id', canActivate: [AuthGuard], component: ArticleComponent},
-  { path: 'authors', canActivate: [AuthGuard], component: AuthorsComponent},
-  { path: 'authors/:id', canActivate: [AuthGuard], component: AuthorComponent},
-  { path: 'search-results', canActivate: [AuthGuard], component: SearchResultComponent},
-  { path: 'login', component: LoginComponent},
+  { path: 'articles',  component: ArticlesComponent},
+  { path: 'articles/:id', component: ArticleComponent},
+  { path: 'authors', component: AuthorsComponent},
+  { path: 'authors/:id', component: AuthorComponent},
+  { path: 'search-results',  component: SearchResultComponent},
   { path: '', redirectTo: 'articles', pathMatch: 'full' },
-  { path: 'not-found', canActivate: [AuthGuard], component: NotFoundComponent },
+  { path: 'not-found', component: NotFoundComponent },
   { path: '**', redirectTo: 'not-found', pathMatch: 'full' }
 ];
 

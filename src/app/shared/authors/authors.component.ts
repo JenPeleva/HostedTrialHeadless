@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthorsService} from '../services/authors.service';
-import {RelatedImage} from '../articles/articles/articles.component';
+import {Image} from '../articles/articles/articles.component';
 import {Observable} from 'rxjs';
 import {RxBaseComponent} from '../common/rx-base/rx-base.component';
 
@@ -26,5 +26,5 @@ export class Author {
   JobTitle: string;
   Name: string;
   UrlName: string;
-  Avatar?: RelatedImage;
+  Avatar?: Image;
 }

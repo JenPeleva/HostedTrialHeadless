@@ -21,14 +21,14 @@ export class ArticlesService {
     if (take !== (null || undefined) && skip !== (null || undefined)) {
       query = this.sitefinity
         .query
-        .select('Title', 'Id', 'Content', 'DateCreated', 'Summary', 'UrlName', 'Author', 'Tags')
+        .select('Title', 'Id', 'Content', 'DateCreated', 'Summary', 'UrlName', 'Author', 'Tags', 'Category')
         .expand('Thumbnail')
         .order('Title desc')
         .skip(skip).take(take);
     } else {
       query = this.sitefinity
         .query
-        .select('Title', 'Id', 'Content', 'DateCreated', 'Summary', 'UrlName', 'Author','Tags')
+        .select('Title', 'Id', 'Content', 'DateCreated', 'Summary', 'UrlName', 'Author','Tags', 'Category')
         .expand('Thumbnail')
         .order('Title desc');
     }
@@ -40,7 +40,7 @@ export class ArticlesService {
     return articlesReplaySubject.asObservable();
   }
 
-  getArticlesByTag(tagId: string): Observable<Article[]> {
+  getArticlesByTaxa(propertyName: string, taxaId: string): Observable<Article[]> {
     const articleSubject = new ReplaySubject<any>(1);
     this.sitefinity.instance.data(articlesDataOptions).get({
       query: this.sitefinity
@@ -50,7 +50,7 @@ export class ArticlesService {
         .order('Title desc')
         .where()
         .any()
-        .eq('Tags', tagId)
+        .eq(propertyName, taxaId)
         .done().done(),
       successCb: data => articleSubject.next(data.value as Article[]),
       failureCb: data => console.log(data)

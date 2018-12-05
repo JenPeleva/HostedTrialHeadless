@@ -12,10 +12,8 @@ import {AppRoutingModule} from './app-routing/app-routing.module';
 import { AuthorComponent } from './shared/authors/author/author.component';
 import { SearchComponent } from './shared/search/search.component';
 import { SearchResultComponent } from './shared/search/search-result/search-result.component';
-import { LoginComponent } from './shared/login/login/login.component';
 import {FormsModule} from '@angular/forms';
-import {AuthGuard} from './auth/auth.guard';
-import { TagsComponent } from './shared/tags/tags/tags.component';
+import { TaxaComponent } from './shared/taxa/taxa.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +25,7 @@ import { TagsComponent } from './shared/tags/tags/tags.component';
     AuthorComponent,
     SearchComponent,
     SearchResultComponent,
-    LoginComponent,
-    TagsComponent
+    TaxaComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +35,6 @@ import { TagsComponent } from './shared/tags/tags/tags.component';
     FormsModule
   ],
   providers: [
-    AuthGuard,
     {provide: 'Sitefinity', useValue: window['Sitefinity']},
   ],
   bootstrap: [AppComponent]

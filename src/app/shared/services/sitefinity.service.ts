@@ -13,6 +13,9 @@ export class SitefinityService {
   private _hasAuthentication: boolean = false;
 
   get instance(): any {
+    if(!this.sitefinity) {
+      this.initializeInstance();
+    }
     return this.sitefinity;
   }
 
@@ -26,16 +29,6 @@ export class SitefinityService {
 
   constructor(@Inject('Sitefinity') private sf) {}
 
-  createInstance(): Promise<boolean> {
-      return new Promise<boolean>((resolve, reject) => {
-        if (!this.sitefinity) {
-            this.initializeInstance();
-            resolve(true);
-        } else {
-          resolve(true);
-        }
-      });
-  }
 
   private initializeInstance(){
     this.sitefinity = new this.sf({serviceUrl});
