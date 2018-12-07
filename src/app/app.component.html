@@ -18,7 +18,7 @@
                 <div class="collapse navbar-collapse">
                   <ul class="nav navbar-nav">
                     <li class="dropdown"><a class="upper-nav dropdown-toggle" routerLink="/articles" routerLinkActive="active">Articles</a></li>
-                    <li class="dropdown"><a class="upper-nav dropdown-toggle" routerLink="/authors" routerLinkActive="active">Authors</a></li>
+                    <li class="dropdown"><a class="upper-nav dropdown-toggle" routerLink="/development" routerLinkActive="active">Development</a></li>
                   </ul>
                 </div>
               </div>
@@ -38,9 +38,16 @@
 </header>
 <main>
   <div class="row">
-    <img *ngIf="bannerImage | async" style="margin-top: 20px;" [alt]="(bannerImage | async).AlternativeText" [src]="(bannerImage | async).Url" [title]="(bannerImage | async).AlternativeText">
+    <div class="homepage-card-banner">
+      <img *ngIf="bannerImage | async" [alt]="(bannerImage | async).AlternativeText" [src]="(bannerImage | async).Url" [title]="(bannerImage | async).AlternativeText" class="splash">
+      <div class="container">
+        <div class="homepage-card-banner-text">
+          <h2 *ngIf="title | async; let title">{{title}}</h2>
+          <p *ngIf="(title | async) === 'Development'">We create hard-working web systems that put you in control. Fully integrated, and using the very latest tech.</p>
+
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="container">
-    <router-outlet></router-outlet>
-  </div>
+  <router-outlet></router-outlet>
 </main>

@@ -23,17 +23,21 @@ export class SearchService {
 
   getItemsBySearchWord(searchWord: string): void {
     const batch = this.sitefinity.instance.batch(data => this._searchResults.next(this.mapSearchResults(data)));
-    batch.get({ entitySet: 'authors', query: this.sitefinity
+    batch.get({ entitySet: 'showcases', query: this.sitefinity
         .query
-        .select('Bio', 'JobTitle', 'Name', 'Id')
-        .order('Name asc')
+        .select('Title', 'Client', 'Challenge', 'Solution', 'Results', 'Id')
+        .order('Title asc')
         .where()
-        .contains('Bio', searchWord)
+        .contains('Title', searchWord)
         .or()
-        .contains('JobTitle', searchWord)
+        .contains('Client', searchWord)
         .or()
-        .contains('Name', searchWord)
-        .done().done().done()});
+        .contains('Challenge', searchWord)
+        .or()
+        .contains('Solution', searchWord)
+        .or()
+        .contains('Results', searchWord)
+        .done().done().done().done().done()});
     batch.get({ entitySet: 'newsitems', query: this.sitefinity
         .query
         .select('Title', 'Content', 'Summary', 'Id')
@@ -67,9 +71,9 @@ export class SearchService {
                 searchResults.push({ Title: contentItm.Title, DetailLink: '/articles/' + contentItm.Id, Content: contentItm.Summary });
               });
               break;
-            case 'authors':
+            case 'showcases':
               valuesArray.forEach(contentItm => {
-                searchResults.push({ Title: contentItm.Name, DetailLink: '/authors/' + contentItm.Id, Content: contentItm.JobTitle });
+                searchResults.push({ Title: contentItm.Title, DetailLink: '/showcase/' + contentItm.Id, Content: contentItm.Challenge });
               });
               break;
             default:

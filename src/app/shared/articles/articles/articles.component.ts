@@ -16,6 +16,7 @@ export class ArticlesComponent extends RxBaseComponent implements OnInit {
   tagsName: string = tagsProperty;
   categoryName: string = categoryProperty;
   private allItemsCount: number;
+  private showMoreItemsLink: boolean = true;
   private subscription: Subscription;
   private articlesCountSubscription: Subscription;
   private articlesForTagSubscription: Subscription;
@@ -23,7 +24,7 @@ export class ArticlesComponent extends RxBaseComponent implements OnInit {
   private taxaServiceSubscription: Subscription;
 
   get shouldShowLoadMore(): boolean {
-    return this.allItemsCount > this.articles.length;
+    return (this.allItemsCount > this.articles.length) && this.showMoreItemsLink;
   }
 
   constructor(private articlesService: ArticlesService, private taxaService: TaxaService) {
@@ -82,6 +83,7 @@ export class ArticlesComponent extends RxBaseComponent implements OnInit {
         this.articles = articles;
       }
     });
+    this.showMoreItemsLink = false;
   }
 
   getAllArticlesCount() {
@@ -98,6 +100,7 @@ export class Article {
   Summary: string;
   Title: string;
   UrlName: string;
+  Featured: boolean;
   Author?: string;
   Thumbnail?: Image;
   Tags?: Array<string>;
@@ -105,9 +108,9 @@ export class Article {
 }
 
 export class Image {
-  Url?: string;
   AlternativeText: string;
   Width: string;
   Height: string;
-  ThumbnailUrl;
+  ThumbnailUrl: string;
+  Url?: string;
 }

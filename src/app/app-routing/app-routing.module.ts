@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {AuthorsComponent} from '../shared/authors/authors.component';
 import {ArticlesComponent} from '../shared/articles/articles/articles.component';
 import {NotFoundComponent} from '../shared/not-found/not-found.component';
-import {AuthorComponent} from '../shared/authors/author/author.component';
 import {ArticleComponent} from '../shared/articles/article/article.component';
 import {SearchResultComponent} from '../shared/search/search-result/search-result.component';
+import {ShowcasesComponent} from '../shared/showcases/showcases.component';
+import {ShowcaseComponent} from '../shared/showcases/showcase/showcase.component';
 
 
 const routes: Routes = [
-  { path: 'articles',  component: ArticlesComponent},
+  { path: 'articles',  component: ArticlesComponent, data: { title: 'Quantum News',  image: 'News Head Banner' }},
   { path: 'articles/:id', component: ArticleComponent},
-  { path: 'authors', component: AuthorsComponent},
-  { path: 'authors/:id', component: AuthorComponent},
+  { path: 'development',  component: ShowcasesComponent, data: { title: 'Development', image: 'Development Head Banner' }},
+  { path: 'showcase/:id',  component: ShowcaseComponent},
   { path: 'search-results',  component: SearchResultComponent},
   { path: '', redirectTo: 'articles', pathMatch: 'full' },
   { path: 'not-found', component: NotFoundComponent },

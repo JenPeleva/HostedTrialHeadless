@@ -106,7 +106,7 @@ h5 {
 a, a:visited, a:link, a:hover, a:active {
   text-decoration: none; }
 
-main > .row:not(:first-child):not(:last-child) {
+main .showcase_row.row:not(:first-child):not(:last-child) {
   padding-top: 5%;
   padding-bottom: 5%; }
 
@@ -769,7 +769,14 @@ video {
 
 .news_image {
   text-align: center;
-  margin-top: 20px; }
+  margin-top: 20px;
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.news_image.news_image_detail img {
+  width: 100%;
+}
 
 .news_item a {
   color: #565656; }

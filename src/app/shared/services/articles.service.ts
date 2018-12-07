@@ -21,16 +21,16 @@ export class ArticlesService {
     if (take !== (null || undefined) && skip !== (null || undefined)) {
       query = this.sitefinity
         .query
-        .select('Title', 'Id', 'Content', 'DateCreated', 'Summary', 'UrlName', 'Author', 'Tags', 'Category')
+        .select('Title', 'Id', 'Content', 'DateCreated', 'PublicationDate', 'Summary', 'UrlName', 'Author', 'Tags', 'Category', 'Featured')
         .expand('Thumbnail')
-        .order('Title desc')
+        .order('PublicationDate desc')
         .skip(skip).take(take);
     } else {
       query = this.sitefinity
         .query
-        .select('Title', 'Id', 'Content', 'DateCreated', 'Summary', 'UrlName', 'Author','Tags', 'Category')
+        .select('Title', 'Id', 'Content', 'DateCreated', 'PublicationDate', 'Summary', 'UrlName', 'Author','Tags', 'Category', 'Featured')
         .expand('Thumbnail')
-        .order('Title desc');
+        .order('PublicationDate desc');
     }
       this.sitefinity.instance.data(articlesDataOptions).get({
       query: query,
