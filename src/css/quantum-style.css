@@ -106,6 +106,14 @@ h5 {
 a, a:visited, a:link, a:hover, a:active {
   text-decoration: none; }
 
+a {
+  color: #00b4c9;
+}
+
+a:hover {
+  color: black;
+}
+
 main .showcase_row.row:not(:first-child):not(:last-child) {
   padding-top: 5%;
   padding-bottom: 5%; }
