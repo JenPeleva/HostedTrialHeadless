@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShowcasesService } from '../services/showcases.service';
-import { Image } from '../articles/articles/articles.component';
+import { Image } from '../news/newsitems/newsitems.component';
 import { Observable } from 'rxjs';
 import { RxBaseComponent } from '../common/rx-base/rx-base.component';
 import {ActivatedRoute} from '@angular/router';

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {SitefinityService} from './sitefinity.service';
 import {Observable, ReplaySubject} from 'rxjs';
-import {Image} from '../articles/articles/articles.component';
+import {Image} from '../news/newsitems/newsitems.component';
 
 export const imageDataOptions = {
   urlName: 'images',

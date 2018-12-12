@@ -6,7 +6,7 @@
           <div class="col-sm-3 col-xs-2">
             <div class="sf-Long-text">
               <p>
-                <a routerLink="/articles">
+                <a routerLink="/news">
                   <img *ngIf="logoImage | async" style="margin-top: 20px;" [alt]="(logoImage | async).AlternativeText" [src]="(logoImage | async).Url" [title]="(logoImage | async).AlternativeText">
                 </a>
               </p>
@@ -17,7 +17,7 @@
               <div class="container-fluid">
                 <div class="collapse navbar-collapse">
                   <ul class="nav navbar-nav">
-                    <li class="dropdown"><a class="upper-nav dropdown-toggle" routerLink="/articles" routerLinkActive="active">Articles</a></li>
+                    <li class="dropdown"><a class="upper-nav dropdown-toggle" routerLink="/news" routerLinkActive="active">News</a></li>
                     <li class="dropdown"><a class="upper-nav dropdown-toggle" routerLink="/development" routerLinkActive="active">Development</a></li>
                   </ul>
                 </div>

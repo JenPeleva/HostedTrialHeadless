@@ -28,6 +28,7 @@ export class SearchService {
         .select('Title', 'Client', 'Challenge', 'Solution', 'Results', 'Id')
         .order('Title asc')
         .where()
+        .or()
         .contains('Title', searchWord)
         .or()
         .contains('Client', searchWord)
@@ -37,18 +38,24 @@ export class SearchService {
         .contains('Solution', searchWord)
         .or()
         .contains('Results', searchWord)
-        .done().done().done().done().done()});
+        .done().done().done().done().done().done()});
+    batch.get({ entitySet: 'images', query: this.sitefinity
+        .query
+        .where()
+        .contains('Title', searchWord)
+        .done()});
     batch.get({ entitySet: 'newsitems', query: this.sitefinity
         .query
         .select('Title', 'Content', 'Summary', 'Id')
         .order('Title asc')
         .where()
+        .or()
         .contains('Title', searchWord)
         .or()
         .contains('Content', searchWord)
         .or()
         .contains('Summary', searchWord)
-        .done().done().done()});
+        .done().done().done().done()});
     batch.execute();
   }
 
@@ -68,12 +75,17 @@ export class SearchService {
           switch (contentType) {
             case 'newsitems':
               valuesArray.forEach(contentItm => {
-                searchResults.push({ Title: contentItm.Title, DetailLink: '/articles/' + contentItm.Id, Content: contentItm.Summary });
+                searchResults.push({ Title: contentItm.Title, DetailLink: '/news/' + contentItm.Id, Content: contentItm.Summary });
               });
               break;
             case 'showcases':
               valuesArray.forEach(contentItm => {
                 searchResults.push({ Title: contentItm.Title, DetailLink: '/showcase/' + contentItm.Id, Content: contentItm.Challenge });
+              });
+              break;
+            case 'images':
+              valuesArray.forEach(contentItm => {
+                searchResults.push({ Title: contentItm.Title, ImageUrl: contentItm.Url });
               });
               break;
             default:

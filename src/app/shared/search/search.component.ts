@@ -18,5 +18,6 @@ export class SearchComponent {
 export class SearchResultItem {
   Title: string;
   DetailLink: string;
-  Content: string;
+  Content?: string;
+  ImageUrl?: string;
 }

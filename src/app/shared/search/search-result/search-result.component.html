@@ -7,9 +7,15 @@
         </div>
         <div class="sf-search-results media-list u-mb4">
           <div *ngFor="let result of (searchResults | async)" class="media sf-media u-mb3">
-            <h3><a [routerLink]="result.DetailLink" style="cursor: pointer;">{{result.Title}}</a></h3>
-            <p [innerHtml]="result.Content"></p>
-            <a [routerLink]="result.DetailLink" style="cursor: pointer;">Read more</a>
+            <div *ngIf="result.ImageUrl" class="media-left sf-img-thmb">
+              <a [attr.href]="result.ImageUrl"><img [src]="result.ImageUrl" [alt]="result.Title"/></a>
+            </div>
+            <div class="media-body sf-media-body">
+              <h3><a [routerLink]="result.DetailLink" style="cursor: pointer;">{{result.Title}}</a></h3>
+              <p [innerHtml]="result.Content"></p>
+              <a *ngIf="result.DetailLink" [routerLink]="result.DetailLink" style="cursor: pointer;">Read more</a>
+              <a *ngIf="result.ImageUrl" [attr.href]="result.ImageUrl" style="cursor: pointer;">{{result.ImageUrl}}</a>
+            </div>
           </div>
         </div>
       </ng-container>

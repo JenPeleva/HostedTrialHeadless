@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Image} from './shared/articles/articles/articles.component';
+import {Image} from './shared/news/newsitems/newsitems.component';
 import {ImagesService} from './shared/services/images.service';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';

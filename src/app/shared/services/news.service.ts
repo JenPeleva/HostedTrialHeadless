@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {SitefinityService} from './sitefinity.service';
 import {ReplaySubject, Observable} from 'rxjs';
-import {Article} from '../articles/articles/articles.component';
-export const articlesDataOptions = {
+import {NewsItem} from '../news/newsitems/newsitems.component';
+export const newsItemsDataOptions = {
   urlName: 'newsitems',
   providerName: 'OpenAccessDataProvider',
   cultureName: 'en'
@@ -11,13 +11,13 @@ export const articlesDataOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class ArticlesService {
+export class NewsService {
 
   constructor(private sitefinity: SitefinityService) { }
 
-  getAllArticles(take?: number, skip?: number): Observable<Article[]> {
+  getAllNews(take?: number, skip?: number): Observable<NewsItem[]> {
     let query;
-    const articlesReplaySubject = new ReplaySubject<Article[]>(1);
+    const newsReplaySubject = new ReplaySubject<NewsItem[]>(1);
     if (take !== (null || undefined) && skip !== (null || undefined)) {
       query = this.sitefinity
         .query
@@ -32,56 +32,56 @@ export class ArticlesService {
         .expand('Thumbnail')
         .order('PublicationDate desc');
     }
-      this.sitefinity.instance.data(articlesDataOptions).get({
+      this.sitefinity.instance.data(newsItemsDataOptions).get({
       query: query,
-      successCb: data => articlesReplaySubject.next(data.value as Article[]),
+      successCb: data => newsReplaySubject.next(data.value as NewsItem[]),
       failureCb: data => console.log(data)
     });
-    return articlesReplaySubject.asObservable();
+    return newsReplaySubject.asObservable();
   }
 
-  getArticlesByTaxa(propertyName: string, taxaId: string): Observable<Article[]> {
-    const articleSubject = new ReplaySubject<any>(1);
-    this.sitefinity.instance.data(articlesDataOptions).get({
+  getNewsByTaxa(propertyName: string, taxaId: string): Observable<NewsItem[]> {
+    const newsSubject = new ReplaySubject<any>(1);
+    this.sitefinity.instance.data(newsItemsDataOptions).get({
       query: this.sitefinity
         .query
-        .select('Title', 'Id', 'Content', 'DateCreated', 'Summary', 'UrlName', 'Author','Tags')
+        .select('Title', 'Id', 'Content', 'DateCreated', 'Summary', 'UrlName', 'Author')
         .expand('Thumbnail')
         .order('Title desc')
         .where()
         .any()
         .eq(propertyName, taxaId)
         .done().done(),
-      successCb: data => articleSubject.next(data.value as Article[]),
+      successCb: data => newsSubject.next(data.value as NewsItem[]),
       failureCb: data => console.log(data)
     });
-    return articleSubject.asObservable();
+    return newsSubject.asObservable();
   }
 
-  getArticle(id: string): Observable<Article> {
-    const articleReplaySubject = new ReplaySubject<any>(1);
-      this.sitefinity.instance.data(articlesDataOptions).getSingle({
+  getNewsItem(id: string): Observable<NewsItem> {
+    const newsReplaySubject = new ReplaySubject<any>(1);
+      this.sitefinity.instance.data(newsItemsDataOptions).getSingle({
           key: id,
           query: this.sitefinity
             .query
             .select('Title', 'Id', 'Content', 'DateCreated', 'Summary', 'UrlName', 'Author', 'Tags')
             .expand('Thumbnail')
             .order('Title desc'),
-          successCb: (data: Article) => {articleReplaySubject.next(data)},
+          successCb: (data: NewsItem) => {newsReplaySubject.next(data)},
           failureCb: data => console.log(data)
         });
-    return articleReplaySubject.asObservable();
+    return newsReplaySubject.asObservable();
   }
 
-  getAllArticlesCount(): Observable<number> {
-    const articleReplaySubject = new ReplaySubject<any>(1);
-      this.sitefinity.instance.data(articlesDataOptions).get({
+  getAllNewsCount(): Observable<number> {
+    const newsReplaySubject = new ReplaySubject<any>(1);
+      this.sitefinity.instance.data(newsItemsDataOptions).get({
         query: this.sitefinity
           .query
           .count(false),
-        successCb: (data: number) => articleReplaySubject.next(data),
+        successCb: (data: number) => newsReplaySubject.next(data),
         failureCb: data => console.log(data)
       });
-    return articleReplaySubject.asObservable();
+    return newsReplaySubject.asObservable();
   }
 }

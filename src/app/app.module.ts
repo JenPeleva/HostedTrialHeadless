@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
-import { ArticlesComponent } from './shared/articles/articles/articles.component';
-import { ArticleComponent } from './shared/articles/article/article.component';
+import { NewsItemsComponent } from './shared/news/newsitems/newsitems.component';
+import { NewsItemComponent } from './shared/news/newsitem/newsitem.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing/app-routing.module';
@@ -18,8 +18,8 @@ import { ShowcaseComponent } from './shared/showcases/showcase/showcase.componen
 @NgModule({
   declarations: [
     AppComponent,
-    ArticlesComponent,
-    ArticleComponent,
+    NewsItemsComponent,
+    NewsItemComponent,
     NotFoundComponent,
     ShowcasesComponent,
     SearchComponent,
