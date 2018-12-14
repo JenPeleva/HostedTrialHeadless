@@ -32,9 +32,6 @@ export class SitefinityService {
 
   private initializeInstance(){
     this.sitefinity = new this.sf({serviceUrl});
-    this.sitefinity.options = {
-      serviceUrl: serviceUrl
-    };
     this.queryInstance = new this.sf.Query();
   }
 }
