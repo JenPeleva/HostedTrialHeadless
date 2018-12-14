@@ -29,7 +29,6 @@ export class SitefinityService {
 
   constructor(@Inject('Sitefinity') private sf) {}
 
-
   private initializeInstance(){
     this.sitefinity = new this.sf({serviceUrl});
     this.queryInstance = new this.sf.Query();

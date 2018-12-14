@@ -11,9 +11,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 1. Add "sitefinity-webservices-sdk" package to the package.json dependencies. This makes it available on the window object.
 2. Then register it in the providers property of the app.module.ts to provide the application with the value of window['Sitefinity'] for any injection called Sitefinity.
 3. Create the Sitefinity service and Inject Sitefinity in the constructor. 
-4. Create two get methods for the Sitefinity SDK instance and query, respectively (for more information about the Sitefinity Webservices SDK, refer to: https://www.npmjs.com/package/sitefinity-webservices-sdk)
+4. In the Sitefinity service create two get methods for the Sitefinity SDK instance and for the query, respectively (for more information about the Sitefinity Webservices SDK, refer to: https://www.npmjs.com/package/sitefinity-webservices-sdk)
 5. Add the reusable parts of the app to the app.component - navigation and general layout.
-6. Configure the routing for the News and Showcases routes. 
+6. Configure the routing for the News and Showcases routes in app-routing module. 
 7. Create the newsitems component (the list of news).
 8. Create the news service with getAllNews method.
 9. Prepare the query object, specifying which properties to select (Title, Id etc) and expand the complex properties (related  data and related media).
