@@ -1111,7 +1111,7 @@ video {
   font-weight: bold; }
 
 .project-phase h3:after {
-  content: url("../../dist/images/Arrow.png");
+  content: url("images/Arrow.png");
   margin-left: 30px; }
 
 .project-phase-last h3:after {
@@ -1630,13 +1630,13 @@ a {
   margin-bottom: 20px; }
 
 .request_a_quote {
-  background-image: url(../../dist/images/Development_ContactUs.jpg);
+  background-image: url(images/Development_ContactUs.jpg);
   background-size: 100%;
   background-repeat: no-repeat;
   margin-top: 5px; }
 
 .write_to_us {
-  background-image: url(../../dist/images/Writetous.jpg);
+  background-image: url(images/Writetous.jpg);
   background-size: 100%;
   background-repeat: no-repeat;
   margin-top: 5px; }
