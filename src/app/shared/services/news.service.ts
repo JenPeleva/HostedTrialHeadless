@@ -18,7 +18,7 @@ export class NewsService {
   getAllNews(take?: number, skip?: number): Observable<NewsItem[]> {
     let query;
     const newsReplaySubject = new ReplaySubject<NewsItem[]>(1);
-    if (take !== (null || undefined) && skip !== (null || undefined)) {
+    if ((take !== null && take !== undefined) && (skip !== null && skip !== undefined)) {
       query = this.sitefinity
         .query
         .select('Title', 'Id', 'Content', 'DateCreated', 'PublicationDate', 'Summary', 'UrlName', 'Author', 'Tags', 'Category', 'Featured')
