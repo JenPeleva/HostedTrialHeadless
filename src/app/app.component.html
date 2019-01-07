@@ -18,7 +18,7 @@
                 <div class="collapse navbar-collapse">
                   <ul class="nav navbar-nav">
                     <li class="dropdown"><a class="upper-nav dropdown-toggle" routerLink="/news" routerLinkActive="active">News</a></li>
-                    <li class="dropdown"><a class="upper-nav dropdown-toggle" routerLink="/development" routerLinkActive="active">Development</a></li>
+                    <li class="dropdown"><a class="upper-nav dropdown-toggle" routerLink="/showcases" routerLinkActive="active">Showcases</a></li>
                   </ul>
                 </div>
               </div>
@@ -43,7 +43,7 @@
       <div class="container">
         <div class="homepage-card-banner-text">
           <h2 *ngIf="title | async; let title">{{title}}</h2>
-          <p *ngIf="(title | async) === 'Development'">We create hard-working web systems that put you in control. Fully integrated, and using the very latest tech.</p>
+          <p *ngIf="(title | async) === 'Showcases'">We create hard-working web systems that put you in control. Fully integrated, and using the very latest tech.</p>
 
         </div>
       </div>

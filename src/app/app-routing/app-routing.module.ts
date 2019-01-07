@@ -12,7 +12,7 @@ import {ShowcaseComponent} from '../shared/showcases/showcase/showcase.component
 const routes: Routes = [
   { path: 'news',  component: NewsItemsComponent, data: { title: 'Quantum News',  image: 'News Head Banner' }},
   { path: 'news/:id', component: NewsItemComponent},
-  { path: 'development',  component: ShowcasesComponent, data: { title: 'Development', image: 'Development Head Banner' }},
+  { path: 'showcases',  component: ShowcasesComponent, data: { title: 'Showcases', image: 'Development Head Banner' }},
   { path: 'showcase/:id',  component: ShowcaseComponent},
   { path: 'search-results',  component: SearchResultComponent},
   { path: '', redirectTo: 'news', pathMatch: 'full' },
