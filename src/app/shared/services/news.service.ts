@@ -15,7 +15,7 @@ export class NewsService {
 
   constructor(private sitefinity: SitefinityService) { }
 
-  getAllNews(take?: number, skip?: number): Observable<NewsItem[]> {
+  getNewsItems(take?: number, skip?: number): Observable<NewsItem[]> {
     let query;
     const newsReplaySubject = new ReplaySubject<NewsItem[]>(1);
     if ((take !== null && take !== undefined) && (skip !== null && skip !== undefined)) {

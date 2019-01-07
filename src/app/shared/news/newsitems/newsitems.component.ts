@@ -46,7 +46,7 @@ export class NewsItemsComponent extends RxBaseComponent implements OnInit {
   }
 
   getTagsAndCategories() {
-    this.allNewsItemsSubscription = this.newsService.getAllNews().subscribe((data: NewsItem[]) => {
+    this.allNewsItemsSubscription = this.newsService.getNewsItems().subscribe((data: NewsItem[]) => {
       this.tags = this.getTaxa(tagsOptions, tagsProperty);
       this.categories = this.getTaxa(categoriesOptions, categoryProperty);
     });
@@ -54,7 +54,7 @@ export class NewsItemsComponent extends RxBaseComponent implements OnInit {
 
   getTaxa(taxaOptions: TaxaOptions, propertyName: string): Observable<Taxa[]> {
     let taxaReplaySubject = new ReplaySubject<Taxa[]>(1);
-    this.allNewsItemsSubscription = this.newsService.getAllNews().subscribe((data: NewsItem[]) => {
+    this.allNewsItemsSubscription = this.newsService.getNewsItems().subscribe((data: NewsItem[]) => {
       let newsItemsTaxas: Array<string> = [];
       if (data) {
         data.forEach((newsItem) => {
@@ -70,7 +70,7 @@ export class NewsItemsComponent extends RxBaseComponent implements OnInit {
 
 
   getNewsItems(): void {
-    this.subscription = this.newsService.getAllNews(6, this.newsItems.length).subscribe((data: NewsItem[]) => {
+    this.subscription = this.newsService.getNewsItems(6, this.newsItems.length).subscribe((data: NewsItem[]) => {
       if (data) {
         this.newsItems.push(...data);
       }

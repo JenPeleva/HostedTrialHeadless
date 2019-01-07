@@ -15,7 +15,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 5. Add the reusable parts of the app to the app.component - navigation and general layout.
 6. Configure the routing for the News and Showcases routes in app-routing module. 
 7. Create the newsitems component (the list of news).
-8. Create the news service with **getAllNews** method.
+8. Create the news service with **getNewsItems** method.
 9. Prepare the query object, specifying which properties to select (Title, Id etc) and expand the complex properties (related  data and related media).
 10. Use the **get** method of the Sitefinity Webservices SDK to request news items from Sitefinity. Provide the query object, as well as success and failure callbacks to the **get** method. 
 11. Since the get request is asynchronous, return the received data as an Observable.
